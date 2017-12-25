@@ -8,6 +8,12 @@
         "issues": "https://github.com/paulzi/cmyii-core/issues?state=open",
         "source": "https://github.com/paulzi/cmyii-core"
     },
+    "repositories": [
+      {
+        "type": "composer",
+        "url": "https://asset-packagist.org"
+      }
+    ],
     "require": {
         "yiisoft/yii2": "^2.0.11",
         "paulzi/yii2-sortable": "^1.0.2",
@@ -18,12 +24,6 @@
     "autoload": {
         "psr-4": {
             "paulzi\\cmyii\\": "src"
-        }
-    },
-    "extra": {
-        "asset-installer-paths": {
-            "npm-asset-library": "vendor/npm",
-            "bower-asset-library": "vendor/bower"
         }
     }
 }

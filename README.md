@@ -11,7 +11,7 @@ If you need the complete CMS, see install [cmyii](https://github.com/paulzi/cmyi
 If you only need a core of CMS, use:
 
 ```bash
-composer require cmyii-core
+composer require paulzi/cmyii-core
 ```
 
 ## Usage
