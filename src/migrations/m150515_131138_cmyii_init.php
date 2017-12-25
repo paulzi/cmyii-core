@@ -109,6 +109,15 @@ class m150515_131138_cmyii_init extends Migration
         $this->addForeignKey('cmyii_block_state_block_id_cmyii_block_id_fkey',   '{{%cmyii_block_state}}', 'block_id',  '{{%cmyii_block}}',  'id', 'CASCADE', 'CASCADE');
         $this->addForeignKey('cmyii_block_state_layout_id_cmyii_layout_id_fkey', '{{%cmyii_block_state}}', 'layout_id', '{{%cmyii_layout}}', 'id', 'CASCADE', 'CASCADE');
         $this->addForeignKey('cmyii_block_state_page_id_cmyii_page_id_fkey',     '{{%cmyii_block_state}}', 'page_id',   '{{%cmyii_page}}',   'id', 'CASCADE', 'CASCADE');
+
+
+        // add data
+        $this->insert('{{%cmyii_layout}}', [
+            'id'    => 1,
+            'path'  => '1',
+            'depth' => 0,
+            'title' => 'Корневой макет',
+        ]);
     }
 
     public function safeDown()
