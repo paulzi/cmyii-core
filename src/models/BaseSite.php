@@ -51,6 +51,7 @@ class BaseSite extends \yii\db\ActiveRecord
             [['domains'], 'string'],
             [['sort'], 'integer'],
             [['is_disabled'], 'boolean'],
+            [['is_disabled'], 'filter', 'filter' => 'boolval'],
             [['title'], 'string', 'max' => 255]
         ];
     }

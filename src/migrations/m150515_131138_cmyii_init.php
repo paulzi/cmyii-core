@@ -106,7 +106,6 @@ class m150515_131138_cmyii_init extends Migration
 
         // add data
         $this->insert('{{%cmyii_layout}}', [
-            'id'    => 1,
             'path'  => '1',
             'depth' => 0,
             'title' => 'Корневой макет',
