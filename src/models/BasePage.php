@@ -107,7 +107,7 @@ class BasePage extends \yii\db\ActiveRecord
             [['slug'], 'required', 'when' => function () { return !$this->isRoot(); }],
             [['site_id', 'parent_id', 'sort', 'depth', 'layout_id'], 'integer'],
             [['is_disabled'], 'boolean'],
-            [['is_disabled'], 'filter', 'filter' => 'boolval'],
+            [['is_disabled'], 'filter', 'filter' => function($value) { return (bool)$value; }],
             [['slug', 'title', 'path', 'link', 'roles', 'seoTitle', 'seoH1', 'seoDescription', 'seoKeywords'], 'string', 'max' => 255],
             [['site_id', 'path'], 'unique', 'targetAttribute' => ['site_id', 'path'], 'message' => 'The combination of Site ID and Path has already been taken.'],
             [['roles'], 'default'],
@@ -147,6 +147,16 @@ class BasePage extends \yii\db\ActiveRecord
     public function init()
     {
         $this->loadDefaultValues();
+        $this->is_disabled = (bool)$this->is_disabled;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function afterFind()
+    {
+        $this->is_disabled = (bool)$this->is_disabled;
+        return parent::afterFind();
     }
 
     /**

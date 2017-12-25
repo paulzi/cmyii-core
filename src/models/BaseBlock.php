@@ -85,7 +85,7 @@ class BaseBlock extends \yii\db\ActiveRecord
             [['layout_id', 'page_id', 'sort', 'is_inherit'], 'integer'],
             [['area', 'title', 'widget_class'], 'required'],
             [['area', 'title', 'widget_class', 'template'], 'string', 'max' => 255],
-            [['is_inherit'], 'filter', 'filter' => 'boolval'],
+            [['is_inherit'], 'filter', 'filter' => function($value) { return (bool)$value; }],
         ];
     }
 
@@ -130,6 +130,23 @@ class BaseBlock extends \yii\db\ActiveRecord
     public static function find()
     {
         return new BlockQuery(get_called_class());
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        $this->is_inherit = (bool)$this->is_inherit;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function afterFind()
+    {
+        $this->is_inherit = (bool)$this->is_inherit;
+        return parent::afterFind();
     }
 
     /**

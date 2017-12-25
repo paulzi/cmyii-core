@@ -51,7 +51,7 @@ class BaseSite extends \yii\db\ActiveRecord
             [['domains'], 'string'],
             [['sort'], 'integer'],
             [['is_disabled'], 'boolean'],
-            [['is_disabled'], 'filter', 'filter' => 'boolval'],
+            [['is_disabled'], 'filter', 'filter' => function($value) { return (bool)$value; }],
             [['title'], 'string', 'max' => 255]
         ];
     }
@@ -76,6 +76,16 @@ class BaseSite extends \yii\db\ActiveRecord
     public function init()
     {
         $this->loadDefaultValues();
+        $this->is_disabled = (bool)$this->is_disabled;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function afterFind()
+    {
+        $this->is_disabled = (bool)$this->is_disabled;
+        return parent::afterFind();
     }
 
     /**
