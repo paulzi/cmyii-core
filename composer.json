@@ -1,0 +1,29 @@
+{
+    "name": "paulzi/cmyii-core",
+    "description": "Cmyii CMS core",
+    "keywords": ["cmyii"],
+    "type": "yii2-extension",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/paulzi/cmyii-core/issues?state=open",
+        "source": "https://github.com/paulzi/cmyii-core"
+    },
+    "require": {
+        "yiisoft/yii2": "^2.0.11",
+        "paulzi/yii2-sortable": "^1.0.2",
+        "paulzi/yii2-adjacency-list": "^2.0.4",
+        "paulzi/yii2-materialized-path": "^2.0.8",
+        "paulzi/yii2-auto-tree": "^1.0.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "paulzi\\cmyii\\": "src"
+        }
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}
