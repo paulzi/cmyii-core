@@ -38,13 +38,6 @@ class m150515_131138_cmyii_init extends Migration
         $this->createIndex('cmyii_layout_path_idx',      '{{%cmyii_layout}}', 'path', true);
         $this->addForeignKey('cmyii_layout_parent_id_cmyii_layout_id_fkey', '{{%cmyii_layout}}', 'parent_id', '{{%cmyii_layout}}', 'id', 'CASCADE', 'CASCADE');
 
-        $this->insert('{{@layout}}', [
-            'id'    => 1,
-            'path'  => '1',
-            'depth' => 0,
-            'title' => 'Корневой макет',
-        ]);
-
 
         // page table
         $this->createTable('{{%cmyii_page}}', [
