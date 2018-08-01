@@ -277,9 +277,9 @@ class BasePage extends \yii\db\ActiveRecord
     /**
      * @return string
      */
-    public function getUrl()
+    public function getUrl($scheme = false)
     {
-        return Url::toRoute(['page/view', 'id' => $this->id]);
+        return Url::to($this->link ?: $this->path, $scheme);
     }
 
     /**
