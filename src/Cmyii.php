@@ -20,6 +20,11 @@ class Cmyii extends Module
     public $addRule = true;
 
     /**
+     * @var bool
+     */
+    public $addRuleToAppend = false;
+
+    /**
      * @var string
      */
     public $cache = 'cache';
@@ -58,7 +63,7 @@ class Cmyii extends Module
                     'class' => 'paulzi\cmyii\components\PageUrlRule',
                     'route' => $this->addRule === true ? $this->id . '/default/view' : $this->addRule,
                 ],
-            ], false);
+            ], $this->addRuleToAppend);
         }
     }
 
@@ -164,7 +169,7 @@ class Cmyii extends Module
      */
     protected function defaultVersion()
     {
-        return '0.1.3';
+        return '0.1.4';
     }
 
     /**
