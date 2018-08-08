@@ -37,12 +37,12 @@ class Cmyii extends Module
     /**
      * @var models\Site
      */
-    protected $_site;
+    protected $_site = false;
 
     /**
      * @var models\Page
      */
-    protected $_page;
+    protected $_page = false;
 
     /**
      * @var models\Layout
@@ -80,6 +80,9 @@ class Cmyii extends Module
      */
     public function getSite()
     {
+        if ($this->_site === false) {
+            $this->initSitePageFromRequest();
+        }
         return $this->_site;
     }
 
@@ -88,6 +91,9 @@ class Cmyii extends Module
      */
     public function getPage()
     {
+        if ($this->_page === false) {
+            $this->initSitePageFromRequest();
+        }
         return $this->_page;
     }
 
@@ -97,6 +103,15 @@ class Cmyii extends Module
     public function getLayout()
     {
         return $this->_layout;
+    }
+
+    /**
+     */
+    public function initSitePageFromRequest()
+    {
+        $request = Yii::$app->request;
+        $this->setSiteByHost($request->getHostInfo());
+        $this->setPageByPath($request->getPathInfo());
     }
 
     /**
@@ -169,7 +184,7 @@ class Cmyii extends Module
      */
     protected function defaultVersion()
     {
-        return '0.1.4';
+        return '0.1.5';
     }
 
     /**

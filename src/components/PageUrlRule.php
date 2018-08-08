@@ -53,8 +53,7 @@ class PageUrlRule extends \yii\base\BaseObject implements \yii\web\UrlRuleInterf
     {
         /** @var Cmyii $module */
         $module = Yii::$app->getModule($this->module);
-        $module->setSiteByHost($request->getHostInfo());
-        $module->setPageByPath($request->getPathInfo());
+        $module->initSitePageFromRequest($request);
         $page = $module->getPage();
 
         return $page ? [$this->route, []] : false;
