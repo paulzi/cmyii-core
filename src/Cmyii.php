@@ -2,6 +2,7 @@
 
 namespace paulzi\cmyii;
 
+use paulzi\cmyii\models\Layout;
 use paulzi\cmyii\models\Page;
 use paulzi\cmyii\models\Site;
 use Yii;
@@ -76,7 +77,7 @@ class Cmyii extends Module
     }
 
     /**
-     * @return models\Site
+     * @return Site
      */
     public function getSite()
     {
@@ -87,7 +88,15 @@ class Cmyii extends Module
     }
 
     /**
-     * @return models\Page
+     * @param Site $site
+     */
+    public function setSite($site)
+    {
+        $this->_site = $site;
+    }
+
+    /**
+     * @return Page
      */
     public function getPage()
     {
@@ -98,11 +107,27 @@ class Cmyii extends Module
     }
 
     /**
-     * @return models\Layout
+     * @param Page $page
+     */
+    public function setPage($page)
+    {
+        $this->_page = $page;
+    }
+
+    /**
+     * @return Layout
      */
     public function getLayout()
     {
         return $this->_layout;
+    }
+
+    /**
+     * @param Layout $layout
+     */
+    public function setLayout($layout)
+    {
+        $this->_layout = $layout;
     }
 
     /**
@@ -184,7 +209,7 @@ class Cmyii extends Module
      */
     protected function defaultVersion()
     {
-        return '0.1.5';
+        return '0.1.7';
     }
 
     /**

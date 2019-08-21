@@ -2,7 +2,7 @@
 
 namespace paulzi\cmyii\migrations;
 
-use yii\db\Migration;
+use paulzi\cmyii\components\Migration;
 
 class m150515_131138_cmyii_init extends Migration
 {
@@ -11,7 +11,7 @@ class m150515_131138_cmyii_init extends Migration
         $tableOptions = null;
         if ($this->db->driverName === 'mysql') {
             // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
-            $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
+            $tableOptions = $this->mysqlTableOptions;
         }
 
 
