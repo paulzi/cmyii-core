@@ -62,7 +62,7 @@ class Area extends Widget
             $all = $blockClass::find()
                 ->forArea($this->id, $this->page, $this->layout)
                 ->all();
-            $blockClass::getInheritance($this->blocks, $this->page, $this->layout);
+            $blockClass::getInheritance($all, $this->page, $this->layout);
             $blocks = [];
             foreach ($all as $block) {
                 if ($this->showDisabled || !$block->isDisabled) {
