@@ -146,6 +146,7 @@ class BasePage extends \yii\db\ActiveRecord
      */
     public function init()
     {
+        parent::init();
         $this->loadDefaultValues();
         $this->is_disabled = (bool)$this->is_disabled;
     }

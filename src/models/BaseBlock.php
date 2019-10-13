@@ -137,6 +137,7 @@ class BaseBlock extends \yii\db\ActiveRecord
      */
     public function init()
     {
+        parent::init();
         $this->is_inherit = (bool)$this->is_inherit;
     }
 
