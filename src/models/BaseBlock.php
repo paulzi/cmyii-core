@@ -270,7 +270,11 @@ class BaseBlock extends \yii\db\ActiveRecord
 
         $result = [];
         foreach ($blocks as $block) {
-            $iState = &$iStates[$block->id];
+            if (isset($iStates[$block->id])) {
+                $iState = &$iStates[$block->id];
+            } else {
+                $iState = ['page_id' => null, 'layout_id' => null];
+            }
             if (($page && $iState['page_id'] === $page->id) || (!$page && $layout && $iState['layout_id'] === $layout->id) || (!$page && !$layout)) {
                 $block->_isDisabled = isset($iState['state_local'])    ? !$iState['state_local']    : !empty($iState['state']);
             } else {
