@@ -12,7 +12,7 @@ class ActiveQuery extends \yii\db\ActiveQuery
      */
     public function active()
     {
-        $this->andWhere(['is_disabled' => 0]);
+        $this->andWhere(['is_disabled' => false]);
         return $this;
     }
 }
